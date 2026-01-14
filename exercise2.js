@@ -6,9 +6,27 @@
 // Add a static method compareAccounts(account1, account2) that compares two BankAccount objects and returns the account with the higher balance.
 
 class BankAccount {
-  // YOUR CODE HERE
-}
+  constructor(accountNumber, balance) {
+    this.accountNumber = accountNumber
+    this.balance = balance
+  }
 
+  deposit(amount) {
+    this.balance += amount
+  }
+
+  withdraw(amount) {
+    if (amount <= this.balance) {
+      this.balance -= amount
+    } else {
+      console.log("Insufficient funds...")
+    }
+  }
+
+  static compareAccounts(account1, account2) {
+    return account1.balance >= account2.balance ? account1 : account2
+  }
+}
 
 // TEST CASE / DRIVER CODE
 const account1 = new BankAccount(123456, 500);
